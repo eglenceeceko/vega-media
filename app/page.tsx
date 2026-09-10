@@ -77,7 +77,7 @@ export default function VegaMediaApp() {
           <div className="animate-fadeIn">
             <div className="mb-8">
               <span className="text-indigo-400 text-xs font-bold tracking-widest uppercase bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
-                VEGA MEDIA {t.brandSubtitle}
+                  {t.brandSubtitle}
               </span>
               <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white mt-3">
                 {t.homeTitle}

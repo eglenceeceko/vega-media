@@ -54,7 +54,7 @@ export const translations = {
     viewInstagram: "Instagram'da Gör →",
   },
   EN: {
-    brandSubtitle: "CONTROL CENTER",
+    brandSubtitle: "OUR WELCOME",
     homeTitle: "What would you like to do?",
     back: "Back",
     madeBy: "Made by Cenk Yaman",
