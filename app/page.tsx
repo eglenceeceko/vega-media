@@ -14,7 +14,7 @@ import {
   ArrowLeft, 
   ArrowUpRight,
   ExternalLink,
-  Compass
+  Flame
 } from 'lucide-react';
 import { translations, servicesData, aboutData, teamCategoriesData, driveLinksData, eventsData, partnersData, blogData, Language } from './data';
 
@@ -31,30 +31,39 @@ export default function VegaMediaApp() {
   };
 
   return (
-    <main className="min-h-screen bg-[#07090e] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden flex flex-col justify-between p-4 md:p-10">
+    <main className="min-h-screen bg-[#030508] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden flex flex-col justify-between p-4 md:p-10">
       
-      {/* Modern Kreatif Stüdyo Arka Plan Işık Efektleri */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] md:w-[1000px] h-[400px] bg-indigo-600/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-[450px] h-[450px] bg-violet-600/10 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 left-0 w-[350px] h-[350px] bg-blue-600/10 blur-[140px] rounded-full pointer-events-none" />
+      {/* Profesyonel Stüdyo Atmosfer Işıkları */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] md:w-[1200px] h-[450px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/10 to-blue-600/5 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-fuchsia-600/10 blur-[180px] rounded-full pointer-events-none" />
 
-      {/* ÜST KISIM (HEADER) */}
-      <header className="max-w-4xl mx-auto w-full flex items-center justify-between pt-2 pb-6 relative z-10 border-b border-slate-800/80">
-        <div className="flex items-center gap-2.5 cursor-pointer group" onClick={goHome}>
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500/20 to-blue-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-105 transition-transform shadow-lg shadow-indigo-500/10">
-            <Compass size={18} />
+      {/* ÜST KISIM (HEADER & ÖZEL LOGO) */}
+      <header className="max-w-4xl mx-auto w-full flex items-center justify-between pt-2 pb-6 relative z-10 border-b border-slate-800/60 backdrop-blur-md">
+        <div className="flex items-center gap-3 cursor-pointer group" onClick={goHome}>
+          {/* Özel VM Logosu */}
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-all">
+            <div className="w-full h-full bg-[#0a0f1d] rounded-[11px] flex items-center justify-center">
+              <span className="font-black text-sm tracking-tighter bg-gradient-to-r from-indigo-400 to-white bg-clip-text text-transparent">
+                VM
+              </span>
+            </div>
           </div>
-          <span className="font-black tracking-wider text-lg bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
-            VEGA MEDIA
-          </span>
+          <div>
+            <span className="font-black tracking-widest text-sm md:text-base text-white block">
+              VEGA MEDIA
+            </span>
+            <span className="text-[10px] text-indigo-400 font-semibold tracking-wider block -mt-1">
+              STUDIOS
+            </span>
+          </div>
         </div>
 
-        {/* Geri Butonu veya Dil Seçeneği */}
+        {/* Geri Butonu ve Dil Seçeneği */}
         <div className="flex items-center gap-3">
           {activeSection !== 'home' && (
             <button 
               onClick={goHome}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold transition-all border border-slate-700/80 cursor-pointer shadow-sm"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 text-xs font-semibold transition-all border border-slate-700/80 cursor-pointer shadow-md"
             >
               <ArrowLeft size={14} />
               <span>{t.back}</span>
@@ -62,7 +71,7 @@ export default function VegaMediaApp() {
           )}
           <button 
             onClick={() => setLang(lang === 'TR' ? 'EN' : 'TR')}
-            className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-indigo-300 text-xs font-bold tracking-wider border border-slate-800 transition-all cursor-pointer shadow-sm"
+            className="px-3.5 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-indigo-300 text-xs font-bold tracking-wider border border-slate-800 transition-all cursor-pointer shadow-md"
           >
             {lang === 'TR' ? 'EN' : 'TR'}
           </button>
@@ -75,125 +84,160 @@ export default function VegaMediaApp() {
         {/* --- ANA SAYFA --- */}
         {activeSection === 'home' && (
           <div className="animate-fadeIn">
-            <div className="mb-8">
-              <span className="text-indigo-400 text-xs font-bold tracking-widest uppercase bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
-                VEGA MEDIA {t.brandSubtitle}
-              </span>
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white mt-3">
-                {t.homeTitle}
-              </h1>
+            <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <div className="inline-flex items-center gap-1.5 text-indigo-400 text-xs font-bold tracking-widest uppercase bg-indigo-500/10 px-3.5 py-1.5 rounded-full border border-indigo-500/20 shadow-inner">
+                  <Flame size={14} className="text-indigo-400 animate-pulse" />
+                  <span>VEGA MEDIA {t.brandSubtitle}</span>
+                </div>
+                <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white mt-3">
+                  {t.homeTitle}
+                </h1>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               
               {/* Kart 1: Hizmetlerimiz */}
-              <div onClick={() => setActiveSection('services')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-indigo-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all">
-                    <Camera size={20} />
+              <div onClick={() => setActiveSection('services')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-indigo-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-indigo-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all shadow-md">
+                    <Camera size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-indigo-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-lg border border-indigo-500/20">Prodüksiyon</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-indigo-200 transition-colors">{t.servicesTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-indigo-200 transition-colors">{t.servicesTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-indigo-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.servicesDesc}</p>
                 </div>
               </div>
 
               {/* Kart 2: Ekibimize Katılın */}
-              <div onClick={() => setActiveSection('join')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-blue-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all">
-                    <Rocket size={20} />
+              <div onClick={() => setActiveSection('join')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-blue-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-blue-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all shadow-md">
+                    <Rocket size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-blue-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">Kariyer</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-blue-200 transition-colors">{t.joinTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-blue-200 transition-colors">{t.joinTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-blue-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.joinDesc}</p>
                 </div>
               </div>
 
               {/* Kart 3: Vega Media Kimdir? */}
-              <div onClick={() => setActiveSection('about')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-violet-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:scale-110 group-hover:bg-violet-500/20 transition-all">
-                    <Sparkles size={20} />
+              <div onClick={() => setActiveSection('about')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-violet-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-violet-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:scale-110 group-hover:bg-violet-500/20 transition-all shadow-md">
+                    <Sparkles size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-violet-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-lg border border-violet-500/20">Hikayemiz</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-violet-200 transition-colors">{t.aboutTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-violet-200 transition-colors">{t.aboutTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-violet-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.aboutDesc}</p>
                 </div>
               </div>
 
               {/* Kart 4: Ailemiz */}
-              <div onClick={() => setActiveSection('team')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-fuchsia-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all">
-                    <Users size={20} />
+              <div onClick={() => setActiveSection('team')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-fuchsia-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-fuchsia-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all shadow-md">
+                    <Users size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-fuchsia-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-fuchsia-400 bg-fuchsia-500/10 px-2.5 py-1 rounded-lg border border-fuchsia-500/20">Ekip</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-fuchsia-200 transition-colors">{t.teamTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-fuchsia-200 transition-colors">{t.teamTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-fuchsia-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.teamDesc}</p>
                 </div>
               </div>
 
               {/* Kart 5: Drive Bağlantıları */}
-              <div onClick={() => setActiveSection('drive')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all">
-                    <FolderKanban size={20} />
+              <div onClick={() => setActiveSection('drive')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all shadow-md">
+                    <FolderKanban size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-amber-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">Arşiv</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-amber-200 transition-colors">{t.driveTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-amber-200 transition-colors">{t.driveTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-amber-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.driveDesc}</p>
                 </div>
               </div>
 
               {/* Kart 6: Etkinlikler */}
-              <div onClick={() => setActiveSection('events')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-cyan-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all">
-                    <Calendar size={20} />
+              <div onClick={() => setActiveSection('events')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-cyan-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all shadow-md">
+                    <Calendar size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-cyan-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20">Takvim</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">{t.eventsTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">{t.eventsTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-cyan-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.eventsDesc}</p>
                 </div>
               </div>
 
               {/* Kart 7: Gelecek Partnerler */}
-              <div onClick={() => setActiveSection('partners')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-emerald-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all">
-                    <Handshake size={20} />
+              <div onClick={() => setActiveSection('partners')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-emerald-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all shadow-md">
+                    <Handshake size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-emerald-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">İş Birliği</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-emerald-200 transition-colors">{t.partnersTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-emerald-200 transition-colors">{t.partnersTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-emerald-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.partnersDesc}</p>
                 </div>
               </div>
 
               {/* Kart 8: Blog */}
-              <div onClick={() => setActiveSection('blog')} className="group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-rose-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-lg shadow-black/40">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 group-hover:scale-110 group-hover:bg-rose-500/20 transition-all">
-                    <Newspaper size={20} />
+              <div onClick={() => setActiveSection('blog')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-rose-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-rose-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-rose-500/10 transition-all" />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 group-hover:scale-110 group-hover:bg-rose-500/20 transition-all shadow-md">
+                    <Newspaper size={22} />
                   </div>
-                  <ArrowUpRight size={18} className="text-slate-600 group-hover:text-rose-400 transition-colors" />
+                  <span className="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20">Yayınlar</span>
                 </div>
-                <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-rose-200 transition-colors">{t.blogTitle}</h2>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white group-hover:text-rose-200 transition-colors">{t.blogTitle}</h2>
+                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-rose-400 transition-colors" />
+                  </div>
                   <p className="text-xs text-slate-400 mt-1">{t.blogDesc}</p>
                 </div>
               </div>
@@ -201,17 +245,21 @@ export default function VegaMediaApp() {
             </div>
 
             {/* İletişim Tam Genişlik Kartı */}
-            <div onClick={() => setActiveSection('contact')} className="mt-3.5 group bg-[#0c1017]/90 hover:bg-[#111722] border border-slate-800/80 hover:border-teal-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex items-center justify-between shadow-lg shadow-black/40">
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 group-hover:scale-110 group-hover:bg-teal-500/20 transition-all">
-                  <PhoneCall size={18} />
+            <div onClick={() => setActiveSection('contact')} className="mt-4 group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-teal-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex items-center justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-teal-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-teal-500/10 transition-all" />
+              <div className="flex items-center gap-4 relative z-10">
+                <div className="w-11 h-11 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 group-hover:scale-110 group-hover:bg-teal-500/20 transition-all shadow-md">
+                  <PhoneCall size={20} />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-teal-200 transition-colors">{t.contactTitle}</h2>
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-lg font-bold text-white group-hover:text-teal-200 transition-colors">{t.contactTitle}</h2>
+                    <span className="text-[10px] font-bold text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-lg border border-teal-500/20">7/24 Aktif</span>
+                  </div>
                   <p className="text-xs text-slate-400">{t.contactDesc}</p>
                 </div>
               </div>
-              <ArrowUpRight size={18} className="text-slate-600 group-hover:text-teal-400 transition-colors" />
+              <ArrowUpRight size={18} className="text-slate-600 group-hover:text-teal-400 transition-colors relative z-10" />
             </div>
 
           </div>
@@ -220,12 +268,15 @@ export default function VegaMediaApp() {
         {/* --- 1. HİZMETLERİMİZ --- */}
         {activeSection === 'services' && (
           <div className="animate-fadeIn">
-            <h2 className="text-2xl font-black text-white mb-6">📸 {t.servicesTitle}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block animate-ping"></span>
+              📸 {t.servicesTitle}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {servicesData.map((item) => (
-                <div key={item.id} className="bg-[#0c1017] border border-slate-800/80 rounded-2xl p-5 shadow-md">
+                <div key={item.id} className="bg-[#090d16] border border-slate-800/80 rounded-2xl p-5 shadow-lg backdrop-blur-sm">
                   <h3 className="text-base font-bold text-indigo-300">{item.title}</h3>
-                  <p className="text-xs text-slate-400 mt-1.5">
+                  <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
                     {lang === 'TR' ? item.descTR : item.descEN}
                   </p>
                 </div>
@@ -236,17 +287,18 @@ export default function VegaMediaApp() {
 
         {/* --- 2. EKİBİMİZE KATILIN --- */}
         {activeSection === 'join' && (
-          <div className="animate-fadeIn bg-[#0c1017] border border-slate-800/80 rounded-2xl p-6 md:p-10 text-center shadow-xl">
-            <div className="w-14 h-14 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400 mx-auto mb-4 shadow-inner">
+          <div className="animate-fadeIn bg-[#090d16] border border-slate-800/80 rounded-3xl p-6 md:p-12 text-center shadow-2xl backdrop-blur-sm relative overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="w-14 h-14 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400 mx-auto mb-4 shadow-inner relative z-10">
               <Rocket size={28} />
             </div>
-            <h2 className="text-xl md:text-2xl font-bold text-white">{t.joinMainText}</h2>
-            <p className="text-xs md:text-sm text-slate-400 mt-2 max-w-md mx-auto">{t.joinSubText}</p>
+            <h2 className="text-xl md:text-2xl font-bold text-white relative z-10">{t.joinMainText}</h2>
+            <p className="text-xs md:text-sm text-slate-400 mt-2 max-w-md mx-auto relative z-10">{t.joinSubText}</p>
             <a 
               href="https://forms.gle/placeholder" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block mt-6 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/25 cursor-pointer"
+              className="inline-block mt-6 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 cursor-pointer relative z-10"
             >
               {t.joinBtn}
             </a>
@@ -257,7 +309,7 @@ export default function VegaMediaApp() {
         {activeSection === 'about' && (
           <div className="animate-fadeIn max-w-xl mx-auto">
             <h2 className="text-2xl font-black text-white mb-6 text-center">🪽 {t.aboutTitle}</h2>
-            <div className="bg-[#0c1017] border border-slate-800/80 rounded-3xl p-6 md:p-8 relative shadow-xl">
+            <div className="bg-[#090d16] border border-slate-800/80 rounded-3xl p-6 md:p-8 relative shadow-2xl backdrop-blur-sm">
               <p className="text-sm md:text-base text-slate-300 leading-relaxed">
                 {aboutData[lang]}
               </p>
@@ -269,9 +321,9 @@ export default function VegaMediaApp() {
         {activeSection === 'team' && (
           <div className="animate-fadeIn">
             <h2 className="text-2xl font-black text-white mb-6">👥 {t.teamTitle}</h2>
-            <div className="space-y-3.5">
+            <div className="space-y-4">
               {teamCategoriesData.map((cat) => (
-                <div key={cat.id} className="bg-[#0c1017] border border-slate-800/80 rounded-2xl p-5 hover:border-fuchsia-500/50 transition-all cursor-pointer shadow-md">
+                <div key={cat.id} className="bg-[#090d16] border border-slate-800/80 rounded-2xl p-5 hover:border-fuchsia-500/50 transition-all cursor-pointer shadow-lg backdrop-blur-sm">
                   <h3 className="text-base font-bold text-fuchsia-300">{lang === 'TR' ? cat.titleTR : cat.titleEN}</h3>
                   <p className="text-xs text-slate-400 mt-1">{lang === 'TR' ? cat.descTR : cat.descEN}</p>
                 </div>
@@ -284,9 +336,9 @@ export default function VegaMediaApp() {
         {activeSection === 'drive' && (
           <div className="animate-fadeIn">
             <h2 className="text-2xl font-black text-white mb-6">📁 {t.driveTitle}</h2>
-            <div className="space-y-3.5">
+            <div className="space-y-4">
               {driveLinksData.map((drive) => (
-                <div key={drive.id} className="bg-[#0c1017] border border-slate-800/80 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md">
+                <div key={drive.id} className="bg-[#090d16] border border-slate-800/80 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg backdrop-blur-sm">
                   <div>
                     <h3 className="text-base font-bold text-amber-300">{drive.name}</h3>
                     <p className="text-xs text-slate-400 mt-1">{lang === 'TR' ? drive.descTR : drive.descEN}</p>
@@ -295,7 +347,7 @@ export default function VegaMediaApp() {
                     href={drive.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-semibold transition-all w-fit cursor-pointer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-semibold transition-all w-fit cursor-pointer shadow-md"
                   >
                     <span>{t.visitDrive}</span>
                     <ExternalLink size={14} />
@@ -310,11 +362,11 @@ export default function VegaMediaApp() {
         {activeSection === 'events' && (
           <div className="animate-fadeIn">
             <h2 className="text-2xl font-black text-white mb-6">🎟️ {t.eventsTitle}</h2>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {eventsData.map((event) => (
-                <div key={event.id} className="bg-[#0c1017] border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl">
+                <div key={event.id} className="bg-[#090d16] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
                   <img src={event.image} alt={event.title} className="w-full h-48 md:h-64 object-cover opacity-90" />
-                  <div className="p-5">
+                  <div className="p-6">
                     <span className="text-xs font-semibold text-cyan-400">{event.date}</span>
                     <h3 className="text-lg font-bold text-white mt-1">{event.title}</h3>
                     <p className="text-xs text-slate-400 mt-1.5">{lang === 'TR' ? event.descTR : event.descEN}</p>
@@ -322,7 +374,7 @@ export default function VegaMediaApp() {
                       href={event.instagramUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-semibold transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-semibold transition-all cursor-pointer shadow-md"
                     >
                       <span>{t.viewInstagram}</span>
                       <ExternalLink size={14} />
@@ -338,18 +390,18 @@ export default function VegaMediaApp() {
         {activeSection === 'partners' && (
           <div className="animate-fadeIn">
             <h2 className="text-2xl font-black text-white mb-6">🤝 {t.partnersTitle}</h2>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {partnersData.map((partner) => (
-                <div key={partner.id} className="bg-[#0c1017] border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl">
+                <div key={partner.id} className="bg-[#090d16] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
                   <img src={partner.image} alt={partner.name} className="w-full h-48 md:h-64 object-cover opacity-90" />
-                  <div className="p-5">
+                  <div className="p-6">
                     <h3 className="text-lg font-bold text-white">{partner.name}</h3>
                     <p className="text-xs text-slate-400 mt-1.5">{lang === 'TR' ? partner.descTR : partner.descEN}</p>
                     <a 
                       href={partner.instagramUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold transition-all cursor-pointer shadow-md"
                     >
                       <span>{t.viewInstagram}</span>
                       <ExternalLink size={14} />
@@ -367,15 +419,15 @@ export default function VegaMediaApp() {
             {selectedBlogId === null ? (
               <div>
                 <h2 className="text-2xl font-black text-white mb-6">📰 {t.blogTitle}</h2>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {blogData.map((blog) => (
                     <div 
                       key={blog.id} 
                       onClick={() => setSelectedBlogId(blog.id)}
-                      className="bg-[#0c1017] border border-slate-800/80 hover:border-rose-500/50 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300"
+                      className="bg-[#090d16] border border-slate-800/80 hover:border-rose-500/50 rounded-3xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 backdrop-blur-sm"
                     >
                       <img src={blog.image} alt="Blog" className="w-full h-40 md:h-52 object-cover opacity-90" />
-                      <div className="p-5">
+                      <div className="p-6">
                         <span className="text-xs font-semibold text-rose-400">{blog.date}</span>
                         <h3 className="text-lg font-bold text-white mt-1">{lang === 'TR' ? blog.titleTR : blog.titleEN}</h3>
                         <p className="text-xs text-slate-400 mt-1.5">{lang === 'TR' ? blog.descTR : blog.descEN}</p>
@@ -393,7 +445,7 @@ export default function VegaMediaApp() {
                   const blog = blogData.find(b => b.id === selectedBlogId);
                   if (!blog) return null;
                   return (
-                    <div className="bg-[#0c1017] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="bg-[#090d16] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
                       <img src={blog.image} alt="Blog Detay" className="w-full h-60 md:h-80 object-cover opacity-90" />
                       <div className="p-6 md:p-8">
                         <button 
@@ -419,7 +471,7 @@ export default function VegaMediaApp() {
         {activeSection === 'contact' && (
           <div className="animate-fadeIn max-w-xl mx-auto">
             <h2 className="text-2xl font-black text-white mb-6 text-center">📩 {t.contactTitle}</h2>
-            <div className="bg-[#0c1017] border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-5 shadow-2xl">
+            <div className="bg-[#090d16] border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-5 shadow-2xl backdrop-blur-sm">
               
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
                 <span className="text-sm font-semibold text-slate-400">{t.instagramLabel}</span>
@@ -456,7 +508,7 @@ export default function VegaMediaApp() {
       </div>
 
       {/* FOOTER */}
-      <footer className="max-w-4xl mx-auto w-full pt-8 pb-2 relative z-10 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <footer className="max-w-4xl mx-auto w-full pt-8 pb-2 relative z-10 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <div>
           <span>Vega Media © 2026. All rights reserved.</span>
         </div>
