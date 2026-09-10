@@ -53,7 +53,7 @@ export default function VegaMediaApp() {
               VEGA MEDIA
             </span>
             <span className="text-[10px] text-indigo-400 font-semibold tracking-wider block -mt-1">
-              STUDIOS
+              Bir Cenk Yaman ve Nisa Damar kuruluşu.
             </span>
           </div>
         </div>
@@ -490,7 +490,7 @@ export default function VegaMediaApp() {
                   <span className="text-sm font-bold text-white block truncate">{t.phone1Name}</span>
                   <span className="text-xs text-slate-500">Telefon</span>
                 </div>
-                <span className="text-sm font-medium text-slate-200 shrink-0">{t.phonePlaceholder}</span>
+                <span className="text-sm font-medium text-slate-200 shrink-0">{t.phone1Value}</span>
               </div>
 
               <div className="flex items-center justify-between gap-4">
@@ -498,7 +498,7 @@ export default function VegaMediaApp() {
                   <span className="text-sm font-bold text-white block truncate">{t.phone2Name}</span>
                   <span className="text-xs text-slate-500">Telefon</span>
                 </div>
-                <span className="text-sm font-medium text-slate-200 shrink-0">{t.phonePlaceholder}</span>
+                <span className="text-sm font-medium text-slate-200 shrink-0">{t.phone2Value}</span>
               </div>
 
             </div>

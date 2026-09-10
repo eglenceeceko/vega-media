@@ -54,7 +54,8 @@ export const translations = {
     emailLabel: "E-posta",
     phone1Name: "Cenk Yaman",
     phone2Name: "Nisa Damar",
-    phonePlaceholder: "[Telefon numarası daha sonra eklenecek]",
+    phone1Value: "+90 (545) 390 34 30", // Cenk'in numarası
+phone2Value: "+90 (555) 085 59 59", // Nisa'nın numarası
     emailPlaceholder: "[E-posta adresi daha sonra eklenecek]",
 
     // Blog Detay
@@ -112,7 +113,8 @@ export const translations = {
     emailLabel: "Email",
     phone1Name: "Cenk Yaman",
     phone2Name: "Nisa Damar",
-    phonePlaceholder: "[Phone number will be added later]",
+        phone1Value: "+90 (545) 390 34 30", // Cenk'in numarası
+phone2Value: "+90 (555) 085 59 59", // Nisa'nın numarası
     emailPlaceholder: "[Email address will be added later]",
 
     readMore: "Read More →",
