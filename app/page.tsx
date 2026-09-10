@@ -23,8 +23,6 @@ export default function VegaMediaApp() {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [selectedBlogId, setSelectedBlogId] = useState<string | null>(null);
 
-const [showIntro, setShowIntro] = useState(true);
-
   const t = translations[lang];
 
   const goHome = () => {
@@ -34,36 +32,7 @@ const [showIntro, setShowIntro] = useState(true);
 
   return (
     <main className="min-h-screen bg-[#030508] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden flex flex-col justify-between p-4 md:p-10 w-full max-w-full box-border">
-      {showIntro ? (
-  /* GEÇİCİ KARŞILAMA EKRANI */
-  <div className="fixed inset-0 bg-[#050811] z-50 flex flex-col items-center justify-center p-4 text-center animate-fadeIn">
-    <div className="absolute inset-0 bg-radial-gradient from-indigo-500/10 via-transparent to-transparent blur-2xl pointer-events-none" />
-    
-    <span className="text-[10px] md:text-xs font-bold tracking-[0.25em] text-slate-400 uppercase mb-3 block">
-      MEDYA & PRODÜKSİYON
-    </span>
-    
-    <h1 className="text-4xl md:text-7xl font-black text-white tracking-tight mb-4 drop-shadow-lg">
-      IN A MEDIA
-    </h1>
-    
-    <p className="text-xs md:text-sm text-slate-400 max-w-lg mx-auto leading-relaxed mb-8">
-      Her tarzdan etkinlik, gösteri ve konferansa destek veren medya ekibi
-    </p>
-
-    <button 
-      onClick={() => setShowIntro(false)}
-      className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition-all shadow-lg shadow-indigo-600/30 cursor-pointer"
-    >
-      Siteye Giriş Yap
-    </button>
-  </div>
-) : (
-  /* ASIL ANA SAYFA (Normal sekmeler ve içerikler buraya gelecek) */
-  <main className="min-h-screen bg-[#050811] ...">
-    {/* Normal sayfa içeriğin */}
-  </main>
-)}
+      
       {/* Profesyonel Stüdyo Atmosfer Işıkları */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] md:w-[1200px] h-[450px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/10 to-blue-600/5 blur-[160px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-fuchsia-600/10 blur-[180px] rounded-full pointer-events-none" />
