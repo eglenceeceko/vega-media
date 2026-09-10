@@ -40,12 +40,14 @@ export default function VegaMediaApp() {
       {/* ÜST KISIM (HEADER & ÖZEL LOGO) */}
       <header className="max-w-4xl mx-auto w-full flex items-center justify-between pt-2 pb-6 relative z-10 border-b border-slate-800/60 backdrop-blur-md">
         <div className="flex items-center gap-3 cursor-pointer group min-w-0" onClick={goHome}>
-          {/* Özel VM Logosu */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-all shrink-0">
-            <div className="w-full h-full bg-[#0a0f1d] rounded-[11px] flex items-center justify-center">
-              <span className="font-black text-sm tracking-tighter bg-gradient-to-r from-indigo-400 to-white bg-clip-text text-transparent">
-                VM
-              </span>
+{/* Profil Fotoğraflı Logo */}
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-all shrink-0 overflow-hidden">
+            <div className="w-full h-full bg-[#0a0f1d] rounded-[11px] overflow-hidden flex items-center justify-center">
+              <img 
+                src="/vegamedia.jpeg" 
+                alt="Cenk Yaman" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div className="min-w-0">
@@ -514,7 +516,7 @@ export default function VegaMediaApp() {
         </div>
         <div>
           <a 
-            href="https://instagram.com/cenkyaman" 
+            href="https://instagram.com/ccenkyaman" 
             target="_blank" 
             rel="noopener noreferrer"
             className="font-semibold text-slate-400 hover:text-white transition-colors"
