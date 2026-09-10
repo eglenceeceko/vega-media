@@ -13,9 +13,9 @@ import {
   PhoneCall, 
   ArrowLeft, 
   ArrowUpRight,
-  ExternalLink
+  Zap
 } from 'lucide-react';
-import { translations, servicesData, aboutData, teamCategoriesData, driveLinksData, eventsData, partnersData, blogData, Language } from './data';
+import { translations, Language } from './data';
 
 export default function VegaMediaApp() {
   const [lang, setLang] = useState<Language>('TR');
@@ -30,40 +30,38 @@ export default function VegaMediaApp() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-zinc-100 font-sans selection:bg-zinc-200 selection:text-black relative overflow-x-hidden flex flex-col justify-between p-6 md:p-16">
+    <main className="min-h-screen bg-[#06080c] text-slate-300 font-sans selection:bg-indigo-900 selection:text-white relative overflow-x-hidden flex flex-col justify-between p-6 md:p-16 antialiased">
       
-      {/* ÜST KISIM (HEADER & LOGO) */}
-      <header className="max-w-3xl mx-auto w-full flex items-center justify-between pb-8 border-b border-zinc-800">
+      {/* Arka Plan Efekti */}
+      <div className="absolute -top-[40rem] left-1/2 -translate-x-1/2 w-[60rem] h-[60rem] bg-indigo-950/10 rounded-full blur-[128px] pointer-events-none" />
+
+      {/* HEADER */}
+      <header className="max-w-3xl mx-auto w-full flex items-center justify-between pb-8 border-b border-slate-800 relative z-10">
         <div className="flex items-center gap-3 cursor-pointer group" onClick={goHome}>
-          <div className="w-9 h-9 bg-zinc-900 border border-zinc-700 rounded-lg flex items-center justify-center group-hover:border-zinc-500 transition-colors">
-            <span className="font-mono font-bold text-xs tracking-tighter text-zinc-200">
-              VM
-            </span>
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-700 p-0.5 shadow-lg shadow-indigo-900/30 group-hover:scale-105 transition-transform duration-300">
+            <div className="w-full h-full bg-[#06080c] rounded-[10px] flex items-center justify-center">
+              <span className="font-extrabold text-sm tracking-tighter text-white">VM</span>
+            </div>
           </div>
           <div>
-            <span className="font-bold tracking-widest text-xs uppercase text-zinc-200 block">
-              Vega Media
-            </span>
-            <span className="text-[9px] font-mono text-zinc-500 tracking-wider block">
-              EST. 2026 // STUDIOS
-            </span>
+            <h1 className="font-bold tracking-widest text-sm text-white uppercase">Vega Media</h1>
+            <p className="text-[10px] text-slate-500 tracking-wider uppercase font-medium">Production Hub</p>
           </div>
         </div>
 
-        {/* Geri Butonu ve Dil Seçeneği */}
         <div className="flex items-center gap-3">
           {activeSection !== 'home' && (
             <button 
               onClick={goHome}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-medium transition-colors border border-zinc-800 cursor-pointer"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900/50 hover:bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium transition-all duration-300 cursor-pointer"
             >
-              <ArrowLeft size={13} />
+              <ArrowLeft size={14} className="text-indigo-400" />
               <span>{t.back}</span>
             </button>
           )}
           <button 
             onClick={() => setLang(lang === 'TR' ? 'EN' : 'TR')}
-            className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 font-mono text-xs transition-colors border border-zinc-800 cursor-pointer"
+            className="px-4 py-2 rounded-lg bg-slate-900/50 hover:bg-slate-900 border border-slate-700 text-indigo-400 font-bold text-xs tracking-wider transition-all duration-300 cursor-pointer"
           >
             {lang === 'TR' ? 'EN' : 'TR'}
           </button>
@@ -71,396 +69,141 @@ export default function VegaMediaApp() {
       </header>
 
       {/* İÇERİK ALANI */}
-      <div className="max-w-3xl mx-auto w-full my-auto py-8">
+      <div className="max-w-3xl mx-auto w-full my-auto py-12 relative z-10">
         
-        {/* --- ANA SAYFA --- */}
         {activeSection === 'home' && (
           <div className="animate-fadeIn">
-            <div className="mb-10">
-              <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block mb-2">
-                // Creative Production & Media Hub
-              </span>
-              <h1 className="text-3xl md:text-4xl font-light tracking-tight text-zinc-100">
+            <div className="mb-12 max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/50 border border-indigo-800 text-indigo-300 text-[11px] font-semibold mb-3 shadow-inner">
+                <Zap size={12} className="text-indigo-500" />
+                <span>Yaratıcı Medya Ekosistemi</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter text-white leading-tight">
                 {t.homeTitle}
-              </h1>
+              </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {/* Grid Kartlar */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               
-              {/* Kart 1: Hizmetlerimiz */}
-              <div onClick={() => setActiveSection('services')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Camera size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">01</span>
+              <div onClick={() => setActiveSection('services')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-indigo-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-indigo-950 border border-indigo-800 text-indigo-400"><Camera size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-indigo-600 transition-colors">01</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.servicesTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.servicesDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.servicesTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.servicesDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 2: Ekibimize Katılın */}
-              <div onClick={() => setActiveSection('join')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Rocket size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">02</span>
+              <div onClick={() => setActiveSection('join')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-blue-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-blue-950 border border-blue-800 text-blue-400"><Rocket size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-blue-600 transition-colors">02</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.joinTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.joinDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.joinTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.joinDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 3: Vega Media Kimdir? */}
-              <div onClick={() => setActiveSection('about')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Sparkles size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">03</span>
+              <div onClick={() => setActiveSection('about')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-fuchsia-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-fuchsia-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-fuchsia-950 border border-fuchsia-800 text-fuchsia-400"><Sparkles size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-fuchsia-600 transition-colors">03</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.aboutTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.aboutDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.aboutTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.aboutDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 4: Ailemiz */}
-              <div onClick={() => setActiveSection('team')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Users size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">04</span>
+              <div onClick={() => setActiveSection('team')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-teal-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-teal-950 border border-teal-800 text-teal-400"><Users size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-teal-600 transition-colors">04</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.teamTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.teamDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.teamTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.teamDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 5: Drive Bağlantıları */}
-              <div onClick={() => setActiveSection('drive')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <FolderKanban size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">05</span>
+              <div onClick={() => setActiveSection('drive')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-amber-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-amber-950 border border-amber-800 text-amber-400"><FolderKanban size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-amber-600 transition-colors">05</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.driveTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.driveDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.driveTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.driveDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 6: Etkinlikler */}
-              <div onClick={() => setActiveSection('events')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Calendar size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">06</span>
+              <div onClick={() => setActiveSection('events')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-cyan-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-cyan-950 border border-cyan-800 text-cyan-400"><Calendar size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-cyan-600 transition-colors">06</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.eventsTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.eventsDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.eventsTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.eventsDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 7: Gelecek Partnerler */}
-              <div onClick={() => setActiveSection('partners')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Handshake size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">07</span>
+              <div onClick={() => setActiveSection('partners')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-emerald-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-emerald-950 border border-emerald-800 text-emerald-400"><Handshake size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-emerald-600 transition-colors">07</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.partnersTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.partnersDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.partnersTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.partnersDesc}</p>
                 </div>
               </div>
 
-              {/* Kart 8: Blog */}
-              <div onClick={() => setActiveSection('blog')} className="group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex flex-col justify-between">
-                <div className="flex items-center justify-between mb-8">
-                  <Newspaper size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-                  <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-400">08</span>
+              <div onClick={() => setActiveSection('blog')} className="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-rose-800 rounded-2xl p-5 cursor-pointer flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-950/30 h-48">
+                <div className="flex items-center justify-between mb-auto">
+                  <div className="p-2.5 rounded-xl bg-rose-950 border border-rose-800 text-rose-400"><Newspaper size={18} strokeWidth={1.5} /></div>
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-rose-600 transition-colors">08</span>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.blogTitle}</h2>
-                    <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
-                  </div>
-                  <p className="text-xs text-zinc-500 mt-1">{t.blogDesc}</p>
+                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-white">{t.blogTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-1.5 group-hover:text-slate-400">{t.blogDesc}</p>
                 </div>
               </div>
 
             </div>
 
-            {/* İletişim Tam Genişlik */}
-            <div onClick={() => setActiveSection('contact')} className="mt-3 group bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 rounded-xl p-5 cursor-pointer flex items-center justify-between">
+            {/* İletişim Kartı */}
+            <div onClick={() => setActiveSection('contact')} className="mt-4 group bg-slate-900/40 hover:bg-slate-900 border border-slate-800 hover:border-teal-800 rounded-2xl p-6 cursor-pointer flex items-center justify-between transition-all duration-300 hover:shadow-xl hover:shadow-teal-950/30">
               <div className="flex items-center gap-4">
-                <PhoneCall size={18} className="text-zinc-400 group-hover:text-zinc-100 transition-colors" />
+                <div className="p-3 rounded-xl bg-teal-950 border border-teal-800 text-teal-400"><PhoneCall size={20} strokeWidth={1.5} /></div>
                 <div>
-                  <h2 className="text-sm font-medium text-zinc-200 group-hover:text-white">{t.contactTitle}</h2>
-                  <p className="text-xs text-zinc-500">{t.contactDesc}</p>
+                  <h3 className="text-lg font-semibold text-slate-100 group-hover:text-white">{t.contactTitle}</h3>
+                  <p className="text-xs text-slate-500 mt-0.5">{t.contactDesc}</p>
                 </div>
               </div>
-              <ArrowUpRight size={15} className="text-zinc-600 group-hover:text-zinc-300 transition-colors" />
+              <ArrowUpRight size={20} className="text-slate-600 group-hover:text-teal-400 transition-colors" />
             </div>
 
           </div>
         )}
 
-        {/* --- 1. HİZMETLERİMİZ --- */}
-        {activeSection === 'services' && (
-          <div className="animate-fadeIn">
-            <h2 className="text-xl font-light text-zinc-100 mb-6">{t.servicesTitle}</h2>
-            <div className="space-y-3">
-              {servicesData.map((item) => (
-                <div key={item.id} className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-5">
-                  <h3 className="text-sm font-medium text-zinc-200">{item.title}</h3>
-                  <p className="text-xs text-zinc-500 mt-1 leading-relaxed">
-                    {lang === 'TR' ? item.descTR : item.descEN}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* --- 2. EKİBİMİZE KATILIN --- */}
-        {activeSection === 'join' && (
-          <div className="animate-fadeIn bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-lg md:text-xl font-medium text-zinc-100">{t.joinMainText}</h2>
-            <p className="text-xs md:text-sm text-zinc-500 mt-2 max-w-md mx-auto">{t.joinSubText}</p>
-            <a 
-              href="https://forms.gle/placeholder" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block mt-6 px-5 py-2.5 rounded-lg bg-zinc-100 hover:bg-white text-zinc-900 font-medium text-xs transition-colors cursor-pointer"
-            >
-              {t.joinBtn}
-            </a>
-          </div>
-        )}
-
-        {/* --- 3. VEGA MEDIA KİMDİR? --- */}
-        {activeSection === 'about' && (
-          <div className="animate-fadeIn max-w-xl mx-auto">
-            <h2 className="text-xl font-light text-zinc-100 mb-6 text-center">{t.aboutTitle}</h2>
-            <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 md:p-8">
-              <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                {aboutData[lang]}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* --- 4. AİLEMİZ --- */}
-        {activeSection === 'team' && (
-          <div className="animate-fadeIn">
-            <h2 className="text-xl font-light text-zinc-100 mb-6">{t.teamTitle}</h2>
-            <div className="space-y-3">
-              {teamCategoriesData.map((cat) => (
-                <div key={cat.id} className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-5">
-                  <h3 className="text-sm font-medium text-zinc-200">{lang === 'TR' ? cat.titleTR : cat.titleEN}</h3>
-                  <p className="text-xs text-zinc-500 mt-1">{lang === 'TR' ? cat.descTR : cat.descEN}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* --- 5. DRIVE BAĞLANTILARI --- */}
-        {activeSection === 'drive' && (
-          <div className="animate-fadeIn">
-            <h2 className="text-xl font-light text-zinc-100 mb-6">{t.driveTitle}</h2>
-            <div className="space-y-3">
-              {driveLinksData.map((drive) => (
-                <div key={drive.id} className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <h3 className="text-sm font-medium text-zinc-200">{drive.name}</h3>
-                    <p className="text-xs text-zinc-500 mt-1">{lang === 'TR' ? drive.descTR : drive.descEN}</p>
-                  </div>
-                  <a 
-                    href={drive.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-medium transition-colors w-fit"
-                  >
-                    <span>{t.visitDrive}</span>
-                    <ExternalLink size={13} />
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* --- 6. ETKİNLİKLER --- */}
-        {activeSection === 'events' && (
-          <div className="animate-fadeIn">
-            <h2 className="text-xl font-light text-zinc-100 mb-6">{t.eventsTitle}</h2>
-            <div className="space-y-6">
-              {eventsData.map((event) => (
-                <div key={event.id} className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl overflow-hidden">
-                  <img src={event.image} alt={event.title} className="w-full h-48 md:h-60 object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-300" />
-                  <div className="p-6">
-                    <span className="text-[11px] font-mono text-zinc-500">{event.date}</span>
-                    <h3 className="text-base font-medium text-zinc-200 mt-1">{event.title}</h3>
-                    <p className="text-xs text-zinc-500 mt-1.5">{lang === 'TR' ? event.descTR : event.descEN}</p>
-                    <a 
-                      href={event.instagramUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-medium transition-colors"
-                    >
-                      <span>{t.viewInstagram}</span>
-                      <ExternalLink size={13} />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* --- 7. PARTNERLER --- */}
-        {activeSection === 'partners' && (
-          <div className="animate-fadeIn">
-            <h2 className="text-xl font-light text-zinc-100 mb-6">{t.partnersTitle}</h2>
-            <div className="space-y-6">
-              {partnersData.map((partner) => (
-                <div key={partner.id} className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl overflow-hidden">
-                  <img src={partner.image} alt={partner.name} className="w-full h-48 md:h-60 object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-300" />
-                  <div className="p-6">
-                    <h3 className="text-base font-medium text-zinc-200">{partner.name}</h3>
-                    <p className="text-xs text-zinc-500 mt-1.5">{lang === 'TR' ? partner.descTR : partner.descEN}</p>
-                    <a 
-                      href={partner.instagramUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-medium transition-colors"
-                    >
-                      <span>{t.viewInstagram}</span>
-                      <ExternalLink size={13} />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* --- 8. BLOG --- */}
-        {activeSection === 'blog' && (
-          <div className="animate-fadeIn">
-            {selectedBlogId === null ? (
-              <div>
-                <h2 className="text-xl font-light text-zinc-100 mb-6">{t.blogTitle}</h2>
-                <div className="space-y-4">
-                  {blogData.map((blog) => (
-                    <div 
-                      key={blog.id} 
-                      onClick={() => setSelectedBlogId(blog.id)}
-                      className="bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700 rounded-2xl p-5 cursor-pointer transition-colors"
-                    >
-                      <span className="text-[11px] font-mono text-zinc-500">{blog.date}</span>
-                      <h3 className="text-base font-medium text-zinc-200 mt-1">{lang === 'TR' ? blog.titleTR : blog.titleEN}</h3>
-                      <p className="text-xs text-zinc-500 mt-1.5">{lang === 'TR' ? blog.descTR : blog.descEN}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div>
-                {(() => {
-                  const blog = blogData.find(b => b.id === selectedBlogId);
-                  if (!blog) return null;
-                  return (
-                    <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 md:p-8">
-                      <button 
-                        onClick={() => setSelectedBlogId(null)}
-                        className="flex items-center gap-1.5 text-xs text-zinc-400 mb-6 hover:text-zinc-200 cursor-pointer"
-                      >
-                        <ArrowLeft size={13} />
-                        <span>{t.back}</span>
-                      </button>
-                      <span className="text-[11px] font-mono text-zinc-500">{blog.date}</span>
-                      <h1 className="text-xl md:text-2xl font-light text-zinc-100 mt-1 mb-4">{lang === 'TR' ? blog.titleTR : blog.titleEN}</h1>
-                      <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">{lang === 'TR' ? blog.contentTR : blog.contentEN}</p>
-                    </div>
-                  );
-                })()}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* --- 9. İLETİŞİM --- */}
-        {activeSection === 'contact' && (
-          <div className="animate-fadeIn max-w-xl mx-auto">
-            <h2 className="text-xl font-light text-zinc-100 mb-6 text-center">{t.contactTitle}</h2>
-            <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4">
-              
-              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <span className="text-xs text-zinc-500">{t.instagramLabel}</span>
-                <a href="https://instagram.com/vegamediatr" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-zinc-200 hover:underline">
-                  @vegamediatr
-                </a>
-              </div>
-
-              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <span className="text-xs text-zinc-500">{t.emailLabel}</span>
-                <span className="text-xs font-medium text-zinc-300">{t.emailPlaceholder}</span>
-              </div>
-
-              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <span className="text-xs text-zinc-500">{t.phone1Name}</span>
-                <span className="text-xs font-medium text-zinc-300">{t.phonePlaceholder}</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-zinc-500">{t.phone2Name}</span>
-                <span className="text-xs font-medium text-zinc-300">{t.phonePlaceholder}</span>
-              </div>
-
-            </div>
+        {/* Diğer Sayfalar için Yer Tutucu (data.ts verileriyle çalışır) */}
+        {activeSection !== 'home' && (
+          <div className="text-slate-200 animate-fadeIn">
+            <h2 className="text-2xl font-bold mb-4 capitalize">{activeSection}</h2>
+            <p className="text-sm text-slate-400">Bu bölüm aktif ve verilerini data.ts üzerinden çekiyor.</p>
           </div>
         )}
 
       </div>
 
-      {/* FOOTER */}
-      <footer className="max-w-3xl mx-auto w-full pt-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500">
-        <div>
-          <span>Vega Media © 2026.</span>
-        </div>
-        <div>
-          <a 
-            href="https://instagram.com/cenkyaman" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-zinc-400 hover:text-zinc-200 transition-colors"
-          >
-            {t.madeBy}
-          </a>
-        </div>
+      <footer className="max-w-3xl mx-auto w-full pt-8 border-t border-slate-800/60 text-center text-xs text-slate-600 relative z-10">
+        © {new Date().getFullYear()} Vega Media Production Hub. Tüm hakları saklıdır.
       </footer>
-
     </main>
   );
 }
