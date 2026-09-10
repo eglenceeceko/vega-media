@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Camera, 
   Rocket, 
@@ -23,8 +23,67 @@ export default function VegaMediaApp() {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [selectedBlogId, setSelectedBlogId] = useState<string | null>(null);
 
-  const t = translations[lang];
+const [isOpen, setIsOpen] = useState(false);
 
+// --- USE EFFECT'I BURAYA EKLIYORSUN ---
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!isOpen && e.deltaY > 0) {
+        setIsOpen(true);
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel);
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [isOpen]);
+{/* Tam Ekran Kaydırılabilir Intro Perdesi */}
+<div 
+  className={`fixed inset-0 z-50 bg-[#030508] flex flex-col items-center justify-between p-6 transition-transform duration-700 ease-in-out ${
+    isOpen ? "-translate-y-full pointer-events-none" : "translate-y-0"
+  }`}
+>
+  {/* Sinematik Uzay ve Galaksi Atmosfer Işıkları */}
+  <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[400px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/15 to-blue-600/10 blur-[140px] rounded-full pointer-events-none" />
+  <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-fuchsia-600/10 blur-[160px] rounded-full pointer-events-none" />
+
+  {/* Sol Üst Dil Butonu */}
+  <div className="z-10 self-start">
+    <button 
+      onClick={() => setLang(lang === 'TR' ? 'EN' : 'TR')}
+      className="px-3.5 py-1.5 rounded-xl border border-slate-700/80 bg-slate-900/80 backdrop-blur-md text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-md cursor-pointer"
+    >
+      {lang}
+    </button>
+  </div>
+
+  {/* Orta Kısım: Ana Başlık ve Slogan */}
+  <div className="z-10 flex flex-col items-center text-center my-auto cursor-pointer" onClick={() => setIsOpen(true)}>
+    <span className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-3 bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20 shadow-inner">
+      Medya & Prodüksiyon
+    </span>
+    
+    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider text-white drop-shadow-2xl">
+      VEGA MEDIA
+    </h1>
+    
+    <p className="text-sm md:text-base text-slate-400 mt-4 max-w-md font-normal">
+      {lang === 'TR' ? 'Her tarzdan etkinlik, gösteri ve konferansa destek veren medya ekibi' : 'The media team supporting all kinds of events, shows, and conferences'}
+    </p>
+  </div>
+
+  {/* Alt Kısım: Keşfetmek İçin Kaydır */}
+  <div className="z-10 flex flex-col items-center gap-2 pb-2 cursor-pointer" onClick={() => setIsOpen(true)}>
+    <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium">
+      {lang === 'TR' ? 'Keşfetmek İçin Kaydır' : 'Scroll to Discover'}
+    </span>
+    <div className="w-5 h-9 rounded-full border-2 border-slate-700/80 flex items-start justify-center p-1 bg-slate-900/50 backdrop-blur-sm">
+      <div className="w-1 h-2 bg-indigo-400 rounded-full animate-bounce" />
+    </div>
+  </div>
+</div>
+
+  const t = translations[lang];
+  
   const goHome = () => {
     setActiveSection('home');
     setSelectedBlogId(null);

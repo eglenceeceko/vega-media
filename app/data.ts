@@ -2,7 +2,7 @@ export type Language = 'TR' | 'EN';
 
 export const translations = {
   TR: {
-    brandSubtitle: "Websitemize Hoşgeldiniz.",
+    brandSubtitle: "Ailesine Hoşgeldiniz.",
     homeTitle: "Ne yapmak istersiniz?",
     back: "Geri",
     madeBy: "Made by Cenk Yaman",
