@@ -1,3 +1,4 @@
+'main'
 'use client';
 
 import React, { useState } from 'react';
@@ -51,7 +52,7 @@ export default function VegaMediaApp() {
           {activeSection !== 'home' && (
             <button 
               onClick={goHome}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all border border-slate-700 cursor-pointer"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all border border-slate-700"
             >
               <ArrowLeft size={14} />
               <span>{t.back}</span>
@@ -59,7 +60,7 @@ export default function VegaMediaApp() {
           )}
           <button 
             onClick={() => setLang(lang === 'TR' ? 'EN' : 'TR')}
-            className="px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 text-xs font-bold tracking-wider border border-slate-800 transition-colors cursor-pointer"
+            className="px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 text-xs font-bold tracking-wider border border-slate-800 transition-colors"
           >
             {lang === 'TR' ? 'EN' : 'TR'}
           </button>
@@ -395,7 +396,7 @@ export default function VegaMediaApp() {
                       <div className="p-6 md:p-8">
                         <button 
                           onClick={() => setSelectedBlogId(null)}
-                          className="flex items-center gap-1.5 text-xs font-semibold text-rose-400 mb-4 hover:underline cursor-pointer"
+                          className="flex items-center gap-1.5 text-xs font-semibold text-rose-400 mb-4 hover:underline"
                         >
                           <ArrowLeft size={14} />
                           <span>{t.back}</span>
