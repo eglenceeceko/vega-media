@@ -36,6 +36,43 @@ const [isOpen, setIsOpen] = useState(false);
     window.addEventListener("wheel", handleWheel);
     return () => window.removeEventListener("wheel", handleWheel);
   }, [isOpen]);
+
+  const t = translations[lang];
+  
+  const goHome = () => {
+    setActiveSection('home');
+    setSelectedBlogId(null);
+  };
+
+  return (
+    <main className="min-h-screen bg-[#030508] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden flex flex-col justify-between p-4 md:p-10 w-full max-w-full box-border">
+      
+      {/* Profesyonel Stüdyo Atmosfer Işıkları */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] md:w-[1200px] h-[450px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/10 to-blue-600/5 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-fuchsia-600/10 blur-[180px] rounded-full pointer-events-none" />
+
+      {/* ÜST KISIM (HEADER & ÖZEL LOGO) */}
+      <header className="max-w-4xl mx-auto w-full flex items-center justify-between pt-2 pb-6 relative z-10 border-b border-slate-800/60 backdrop-blur-md">
+        <div className="flex items-center gap-3 cursor-pointer group min-w-0" onClick={goHome}>
+{/* Profil Fotoğraflı Logo */}
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-all shrink-0 overflow-hidden">
+            <div className="w-full h-full bg-[#0a0f1d] rounded-[11px] overflow-hidden flex items-center justify-center">
+              <img 
+                src="/vegamedia.jpeg" 
+                alt="Cenk Yaman" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="min-w-0">
+            <span className="font-black tracking-widest text-sm md:text-base text-white block truncate">
+              VEGA MEDIA
+            </span>
+            <span className="text-[10px] text-indigo-400 font-semibold tracking-wider block -mt-1">
+              Bir Cenk Yaman ve Nisa Damar kuruluşu.
+            </span>
+          </div>
+        </div>
 {/* Tam Ekran Kaydırılabilir Intro Perdesi */}
 <div 
   className={`fixed inset-0 z-50 bg-[#030508] flex flex-col items-center justify-between p-6 transition-transform duration-700 ease-in-out ${
@@ -81,44 +118,6 @@ const [isOpen, setIsOpen] = useState(false);
     </div>
   </div>
 </div>
-
-  const t = translations[lang];
-  
-  const goHome = () => {
-    setActiveSection('home');
-    setSelectedBlogId(null);
-  };
-
-  return (
-    <main className="min-h-screen bg-[#030508] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden flex flex-col justify-between p-4 md:p-10 w-full max-w-full box-border">
-      
-      {/* Profesyonel Stüdyo Atmosfer Işıkları */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] md:w-[1200px] h-[450px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/10 to-blue-600/5 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-fuchsia-600/10 blur-[180px] rounded-full pointer-events-none" />
-
-      {/* ÜST KISIM (HEADER & ÖZEL LOGO) */}
-      <header className="max-w-4xl mx-auto w-full flex items-center justify-between pt-2 pb-6 relative z-10 border-b border-slate-800/60 backdrop-blur-md">
-        <div className="flex items-center gap-3 cursor-pointer group min-w-0" onClick={goHome}>
-{/* Profil Fotoğraflı Logo */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-all shrink-0 overflow-hidden">
-            <div className="w-full h-full bg-[#0a0f1d] rounded-[11px] overflow-hidden flex items-center justify-center">
-              <img 
-                src="/vegamedia.jpeg" 
-                alt="Cenk Yaman" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <div className="min-w-0">
-            <span className="font-black tracking-widest text-sm md:text-base text-white block truncate">
-              VEGA MEDIA
-            </span>
-            <span className="text-[10px] text-indigo-400 font-semibold tracking-wider block -mt-1">
-              Bir Cenk Yaman ve Nisa Damar kuruluşu.
-            </span>
-          </div>
-        </div>
-
         {/* Geri Butonu ve Dil Seçeneği */}
         <div className="flex items-center gap-3 shrink-0">
           {activeSection !== 'home' && (
