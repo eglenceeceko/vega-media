@@ -74,10 +74,9 @@ const [isOpen, setIsOpen] = useState(false);
           </div>
         </div>
 {/* Tam Ekran Kaydırılabilir Intro Perdesi */}
-<div 
-  className={`fixed inset-0 z-50 bg-[#030508] flex flex-col items-center justify-between p-6 transition-transform duration-700 ease-in-out ${
-    isOpen ? "-translate-y-full pointer-events-none" : "translate-y-0"
-  }`}
+<div className={`fixed inset-0 z-[99999] bg-[#030508] flex flex-col items-center justify-between p-6 transition-transform duration-700 ease-in-out ${
+  isOpen ? "-translate-y-full pointer-events-none" : "translate-y-0"
+}`}
 >
   {/* Sinematik Uzay ve Galaksi Atmosfer Işıkları */}
   <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[400px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/15 to-blue-600/10 blur-[140px] rounded-full pointer-events-none" />
