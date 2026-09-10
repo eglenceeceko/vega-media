@@ -10,30 +10,39 @@ export const translations = {
     // Ana Sayfa Kartları
     servicesTitle: "Hizmetlerimiz",
     servicesDesc: "Size hangi alanda yardımcı olabiliriz?",
+    tagProduction: "Prodüksiyon",
     
     joinTitle: "Ekibimize Katılın!",
     joinDesc: "Sen yoksan bir kişi eksiğiz!",
+    tagCareer: "Kariyer",
     
     aboutTitle: "Vega Media Kimdir?",
     aboutDesc: "Kuruluş hikayemizi öğrenin ve bizi tanıyın!",
+    tagStory: "Hikayemiz",
     
     teamTitle: "Ailemiz",
     teamDesc: "Değerli ekip dostlarımızı tanıyın!",
+    tagTeam: "Ekip",
     
     driveTitle: "Drive Bağlantıları",
     driveDesc: "Yaptığımız işleri görün.",
+    tagArchive: "Arşiv",
     
     eventsTitle: "Etkinlikler",
     eventsDesc: "Geçmişte Katıldığımız Etkinliklere bir göz atın.",
+    tagCalendar: "Takvim",
     
     partnersTitle: "Gelecek Partnerlerimizi Tanıyın",
     partnersDesc: "Gelecekteki işbirliklerimizi görün.",
+    tagCollaboration: "İş Birliği",
     
     blogTitle: "Blog",
     blogDesc: "Yeni güncellemelerimizi görün.",
+    tagPublications: "Yayınlar",
     
     contactTitle: "İletişim",
     contactDesc: "Bize Ulaşın.",
+    tagActive: "7/24 Aktif",
 
     // Ekibimize Katılın Sayfası
     joinMainText: "Vega Media Ailemizde sen yoksan bir kişi eksiğiz!",
@@ -61,30 +70,39 @@ export const translations = {
     
     servicesTitle: "Our Services",
     servicesDesc: "How can we help you?",
+    tagProduction: "Production",
     
     joinTitle: "Join Our Team!",
     joinDesc: "We are missing one person without you!",
+    tagCareer: "Career",
     
     aboutTitle: "Who is Vega Media?",
     aboutDesc: "Learn our founding story and get to know us!",
+    tagStory: "Our Story",
     
     teamTitle: "Our Family",
     teamDesc: "Meet our valuable team friends!",
+    tagTeam: "Team",
     
     driveTitle: "Drive Links",
     driveDesc: "Take a look at our works.",
+    tagArchive: "Archive",
     
     eventsTitle: "Events",
     eventsDesc: "Take a look at the events we attended in the past.",
+    tagCalendar: "Calendar",
     
     partnersTitle: "Meet Our Future Partners",
     partnersDesc: "See our future collaborations.",
+    tagCollaboration: "Collaboration",
     
     blogTitle: "Blog",
     blogDesc: "Check out our latest updates.",
+    tagPublications: "Publications",
     
     contactTitle: "Contact",
     contactDesc: "Get in touch with us.",
+    tagActive: "24/7 Active",
 
     joinMainText: "We are missing one person in the Vega Media family without you!",
     joinSubText: "Just fill out the form. We will contact you as soon as possible!",
