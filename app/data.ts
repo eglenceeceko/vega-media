@@ -135,10 +135,59 @@ export const aboutData = {
   EN: "Vega Media is a young and creative team established to produce in the fields of media, photography, video, editing and technology..."
 };
 
-export const teamCategoriesData = [
-  { id: 'management', titleTR: 'Yönetim Ekibimiz', titleEN: 'Management Team', descTR: 'Değerli Yönetim Ekibimizle Tanışın!', descEN: 'Meet our valuable management team!' },
-  { id: 'press', titleTR: 'Basın & Fotoğraf', titleEN: 'Press & Photography', descTR: 'Değerli basın ekibimizle tanışın!', descEN: 'Meet our valuable press team!' },
-  { id: 'software', titleTR: 'Yazılım', titleEN: 'Software', descTR: 'Değerli yazılım ekibimizle tanışın!', descEN: 'Meet our valuable software team!' }
+const familyCategoriesData = [
+  {
+    id: 'yonetim',
+    titleTR: 'Yönetim Ekibimiz',
+    titleEN: 'Management Team',
+    descTR: 'Değerli Yönetim Ekibimizle Tanışın!',
+    descEN: 'Meet our valued Management Team!',
+    members: [
+      {
+        id: 1,
+        nameTR: 'Cenk Yaman',
+        nameEN: 'Cenk Yaman',
+        roleTR: 'Kurucu',
+        roleEN: 'Founder',
+        image: 'https://images.unsplash.com/...'
+      },
+      // Diğer yönetim üyeleri...
+    ]
+  },
+  {
+    id: 'basin',
+    titleTR: 'Basın & Fotoğraf',
+    titleEN: 'Press & Photography',
+    descTR: 'Değerli basın ekibimizle tanışın!',
+    descEN: 'Meet our valued press team!',
+    members: [
+      {
+        id: 2,
+        nameTR: 'Örnek Üye',
+        nameEN: 'Sample Member',
+        roleTR: 'Fotoğrafçı',
+        roleEN: 'Photographer',
+        image: 'https://images.unsplash.com/...'
+      }
+    ]
+  },
+  {
+    id: 'yazilim',
+    titleTR: 'Yazılım',
+    titleEN: 'Software',
+    descTR: 'Değerli yazılım ekibimizle tanışın!',
+    descEN: 'Meet our valued software team!',
+    members: [
+      {
+        id: 3,
+        nameTR: 'Örnek Geliştirici',
+        nameEN: 'Sample Developer',
+        roleTR: 'Frontend Geliştirici',
+        roleEN: 'Frontend Developer',
+        image: 'https://images.unsplash.com/...'
+      }
+    ]
+  }
 ];
 
 export const driveLinksData = [

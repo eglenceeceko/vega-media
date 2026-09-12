@@ -22,6 +22,8 @@ export default function VegaMediaApp() {
   const [lang, setLang] = useState<Language>('TR');
   const [activeSection, setActiveSection] = useState<string>('home');
   const [selectedBlogId, setSelectedBlogId] = useState<string | null>(null);
+  
+const [selectedCategory, setSelectedCategory] = useState<any>(null);
 
   const t = translations[lang];
 
@@ -153,23 +155,100 @@ export default function VegaMediaApp() {
                 </div>
               </div>
 
-              {/* Kart 4: Ailemiz */}
-              <div onClick={() => setActiveSection('team')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-fuchsia-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-fuchsia-500/10 transition-all" />
-                <div className="flex items-center justify-between mb-4 relative z-10">
-                  <div className="w-11 h-11 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all shadow-md shrink-0">
-                    <Users size={22} />
-                  </div>
-                  <span className="text-[10px] font-bold text-fuchsia-400 bg-fuchsia-500/10 px-2.5 py-1 rounded-lg border border-fuchsia-500/20">{t.tagTeam}</span>
-                </div>
-                <div className="relative z-10 min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <h2 className="text-lg font-bold text-white group-hover:text-fuchsia-200 transition-colors truncate">{t.teamTitle}</h2>
-                    <ArrowUpRight size={18} className="text-slate-600 group-hover:text-fuchsia-400 transition-colors shrink-0" />
-                  </div>
-                  <p className="text-xs text-slate-400 mt-1 break-words">{t.teamDesc}</p>
-                </div>
+{/* --- 1. ANA SAYFA KARTI (Menüde görünen kart) --- */}
+{activeSection === 'home' && (
+  <div onClick={() => setActiveSection('team')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-fuchsia-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-fuchsia-500/10 transition-all" />
+    <div className="flex items-center justify-between mb-4 relative z-10">
+      <div className="w-11 h-11 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all shadow-md shrink-0">
+        <Users size={22} />
+      </div>
+      <span className="text-[10px] font-bold text-fuchsia-400 bg-fuchsia-500/10 px-2.5 py-1 rounded-lg border border-fuchsia-500/20">{t.tagTeam}</span>
+    </div>
+    <div className="relative z-10 min-w-0">
+      <div className="flex items-center justify-between gap-2">
+        <h2 className="text-lg font-bold text-white group-hover:text-fuchsia-200 transition-colors truncate">{t.teamTitle}</h2>
+        <ArrowUpRight size={18} className="text-slate-600 group-hover:text-fuchsia-400 transition-colors shrink-0" />
+      </div>
+      <p className="text-xs text-slate-400 mt-1 break-words">{t.teamDesc}</p>
+    </div>
+  </div>
+)}
+
+{/* --- 2. DETAY EKRANI (Kategoriler ve Tıklanınca Üye Kartları) --- */}
+{(activeSection as any) === 'team' && (
+  <div className="animate-fadeIn w-full col-span-full">
+    
+    {/* EĞER KATEGORİ SEÇİLMEDİYSE: Kategorileri Listele */}
+    {!selectedCategory ? (
+      <>
+        {/* Ana Sayfaya Dön Butonu */}
+        <button 
+          onClick={() => setActiveSection('main')}
+          className="mb-6 flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white text-xs font-semibold transition-all cursor-pointer border border-slate-700 shadow-md"
+        >
+          ← {lang === 'TR' ? 'Ana Sayfaya Dön' : 'Back to Home'}
+        </button>
+
+        <h2 className="text-2xl font-black text-white mb-6">👥 {t.teamTitle}</h2>
+        
+        <div className="space-y-4">
+          {teamCategoriesData.map((cat) => (
+            <div 
+              key={cat.id} 
+              onClick={() => setSelectedCategory(cat)}
+              className="bg-[#090d16] border border-slate-800/80 rounded-2xl p-5 hover:border-fuchsia-500/50 transition-all cursor-pointer shadow-lg backdrop-blur-sm group"
+            >
+              <h3 className="text-base font-bold text-fuchsia-300 group-hover:text-fuchsia-200 break-words">
+                {lang === 'TR' ? cat.titleTR : cat.titleEN}
+              </h3>
+              <p className="text-xs text-slate-400 mt-1 break-words">
+                {lang === 'TR' ? cat.descTR : cat.descEN}
+              </p>
+            </div>
+          ))}
+        </div>
+      </>
+    ) : (
+      /* EĞER KATEGORİ SEÇİLDİYSE: Üyeleri Kartlar Halinde Göster */
+      <div>
+        {/* Kategoriler Listesine Dön Butonu */}
+        <button 
+          onClick={() => setSelectedCategory(null)}
+          className="mb-6 flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white text-xs font-semibold transition-all cursor-pointer border border-slate-700 shadow-md"
+        >
+          ← {lang === 'TR' ? 'Kategorilere Dön' : 'Back to Categories'}
+        </button>
+
+        <h2 className="text-2xl font-black text-white mb-6">
+          {lang === 'TR' ? selectedCategory.titleTR : selectedCategory.titleEN}
+        </h2>
+
+        {/* Üye Kartları Grid Yapısı */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {selectedCategory.members.map((member: any) => (
+            <div key={member.id} className="bg-[#090d16] border border-slate-800/80 rounded-3xl p-5 flex items-center gap-4 shadow-2xl">
+              <img 
+                src={member.image} 
+                alt={lang === 'TR' ? member.nameTR : member.nameEN} 
+                className="w-16 h-16 rounded-full object-cover border border-fuchsia-500/30 shrink-0" 
+              />
+              <div className="min-w-0">
+                <h3 className="text-base font-bold text-white break-words">
+                  {lang === 'TR' ? member.nameTR : member.nameEN}
+                </h3>
+                <p className="text-xs font-semibold text-fuchsia-400 mt-0.5 break-words">
+                  {lang === 'TR' ? member.roleTR : member.roleEN}
+                </p>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </div>
+)}
 
               {/* Kart 5: Drive Bağlantıları */}
               <div onClick={() => setActiveSection('drive')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
@@ -318,20 +397,6 @@ export default function VegaMediaApp() {
           </div>
         )}
 
-        {/* --- 4. AİLEMİZ --- */}
-        {activeSection === 'team' && (
-          <div className="animate-fadeIn w-full">
-            <h2 className="text-2xl font-black text-white mb-6">👥 {t.teamTitle}</h2>
-            <div className="space-y-4">
-              {teamCategoriesData.map((cat) => (
-                <div key={cat.id} className="bg-[#090d16] border border-slate-800/80 rounded-2xl p-5 hover:border-fuchsia-500/50 transition-all cursor-pointer shadow-lg backdrop-blur-sm">
-                  <h3 className="text-base font-bold text-fuchsia-300 break-words">{lang === 'TR' ? cat.titleTR : cat.titleEN}</h3>
-                  <p className="text-xs text-slate-400 mt-1 break-words">{lang === 'TR' ? cat.descTR : cat.descEN}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* --- 5. DRIVE BAĞLANTILARI --- */}
         {activeSection === 'drive' && (
