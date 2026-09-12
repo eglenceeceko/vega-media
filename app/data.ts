@@ -29,7 +29,7 @@ export const translations = {
     tagArchive: "Arşiv",
     
     eventsTitle: "Etkinlikler",
-    eventsDesc: "Geçmişte Katıldığımız Etkinliklere bir göz atın.",
+    eventsDesc: "Geçmişte katıldığımız etkinliklere bir göz atın.",
     tagCalendar: "Takvim",
     
     partnersTitle: "Gelecek Partnerlerimizi Tanıyın",
@@ -171,13 +171,27 @@ export const partnersData = [
 export const blogData = [
   { 
     id: '1', 
-    titleTR: 'Vega Media Yeni Döneme Hazır!', 
-    titleEN: 'Vega Media is Ready for the New Era!',
+    titleTR: 'Vega Media Yenilenen Yüzüyle Karşınızda!', 
+    titleEN: 'Vega Media is Back with a Renewed Look!',
     date: '10 Eylül 2026', 
-    descTR: 'Yepyeni projeler ve teknolojik altyapımızla büyüyoruz.', 
-    descEN: 'We are growing with brand new projects and our technological infrastructure.',
-    contentTR: 'Vega Media olarak bu dönem çok daha güçlü projelerle karşınızdayız. Yazılım ekibimiz, basın ekibimiz ve yönetim kadromuzla sınırları zorlamaya devam ediyoruz.',
-    contentEN: 'As Vega Media, we are here with much stronger projects this term. We continue to push boundaries with our software team, press team and management staff.',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop'
+    descTR: 'Yepyeni projeler ve teknolojik altyapımızla büyüyoruz, gelişiyoruz, daha iyisi olmaya hazırlanıyoruz.', 
+    descEN: 'Growing with brand new projects and technological infrastructure, we are evolving and preparing to become even better.',
+contentTR: `Vega Media olarak, dijital dünyada ve etkinlik yönetiminde sınırları zorlamaya devam ediyoruz. Topluluğumuzu ve projelerimizi çok daha ileri bir seviyeye taşımak için uzun süredir sürdürdüğümüz yenilenme sürecini gururla tamamladık.
+
+Gelişen teknolojiye ayak uydurmakla kalmıyor, trendleri bizzat belirliyoruz. Yenilenen web sitemiz ve modern altyapımızla artık projelerimize, etkinlik arşivlerimize ve içeriklerimize ulaşmak çok daha hızlı ve akıcı. Ziyaretçilerimize sunduğumuz bu taze arayüz, gelecekte atacağımız büyük adımların yalnızca bir başlangıcı.
+
+Medya prodüksiyonundan sosyal medya yönetimine, unutulmaz çalıştaylardan büyük çaplı organizasyonlara kadar her adımda kaliteyi hedefliyoruz. Yeni dönemde hayata geçireceğimiz sürpriz projeler ve ortaklıklar için sabırsızlanıyoruz.
+
+Bizi bu yolculukta yalnız bırakmayan tüm ailemize ve paydaşlarımıza teşekkür ederiz. 
+Gelişmelerden haberdar olmak için takipte kalın!`,    
+contentEN: `As Vega Media, we continue to push boundaries in the digital world and event management. We are proudly completing our long-running renewal process to take our community and projects to the next level.
+
+We don't just keep up with developing technology; we set the trends ourselves. With our revamped website and modern infrastructure, accessing our projects, event archives, and content is now much faster and smoother. This fresh interface we offer our visitors is just the beginning of the major steps we will take in the future.
+
+From media production to social media management, and from unforgettable workshops to large-scale organizations, we aim for quality at every step. We are excited about the surprise projects and partnerships we will bring to life in this new era.
+
+Thank you to all our family members and stakeholders who haven't left us alone on this journey. 
+Stay tuned to keep up with all the updates!`,    
+image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop'
   }
 ];
