@@ -368,7 +368,7 @@ export default function VegaMediaApp() {
                 <div key={event.id} className="bg-[#090d16] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
                   <img src={event.image} alt={lang === 'TR' ? event.titleTR : event.titleEN} className="w-full h-48 md:h-64 object-cover opacity-90" />
                   <div className="p-6">
-                    <span className="text-xs font-semibold text-cyan-400">{event.date}</span>
+                    <span className="text-xs font-semibold text-cyan-400">{lang === 'TR' ? event.dateTR : event.dateEN}</span>
                     <h3 className="text-lg font-bold text-white mt-1 break-words">{lang === 'TR' ? event.titleTR : event.titleEN}</h3>
                     <p className="text-xs text-slate-400 mt-1.5 break-words">{lang === 'TR' ? event.descTR : event.descEN}</p>
                     <a 
@@ -456,7 +456,7 @@ export default function VegaMediaApp() {
                           <ArrowLeft size={14} />
                           <span>{t.back}</span>
                         </button>
-                        <span className="text-xs font-semibold text-rose-400">{blog.date}</span>
+                        <span className="text-xs font-semibold text-rose-400">{lang === 'TR' ? blog.dateTR : blog.dateEN}</span>
                         <h1 className="text-2xl md:text-3xl font-black text-white mt-1 mb-4 break-words">{lang === 'TR' ? blog.titleTR : blog.titleEN}</h1>
                         <p className="text-sm text-slate-300 leading-relaxed break-words">{lang === 'TR' ? blog.contentTR : blog.contentEN}</p>
                       </div>

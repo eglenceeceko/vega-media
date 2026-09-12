@@ -142,15 +142,16 @@ export const teamCategoriesData = [
 ];
 
 export const driveLinksData = [
-  { id: '1', nameTR: 'Gelecek Partnerimiz', nameEN: 'Upcoming Partner', descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', link: 'https://instagram.com/vegamediatr' }
+  { id: '1', nameTR: 'Çok Yakında...', nameEN: 'Coming Soon...', descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', link: 'https://instagram.com/vegamediatr' }
 ];
 
 export const eventsData = [
   { 
     id: '1', 
-    titleTR: 'Kasım Çalıştayı',
-    titleEN: 'November Workshop',
-    date: 'Kasım 2026', 
+    titleTR: 'Çok Yakında...',
+    titleEN: 'Coming Soon...',
+    dateTR: '11 Ekim 2026',
+  dateEN: '11 October 2026',
     descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', 
     descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', 
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
@@ -161,8 +162,8 @@ export const eventsData = [
 export const partnersData = [
   { 
     id: '1', 
-    nameTR: 'Gelecek Partnerimiz',
-    nameEN: 'Upcoming Partner',
+    nameTR: 'Çok Yakında...',
+    nameEN: 'Coming Soon...',
     descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', 
     descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', 
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
@@ -175,7 +176,8 @@ export const blogData = [
     id: '1', 
     titleTR: 'Vega Media Yenilenen Yüzüyle Karşınızda!', 
     titleEN: 'Vega Media is Back with a Renewed Look!',
-    date: '10 Eylül 2026', 
+    dateTR: '10 Eylül 2026', 
+    dateEN: '10 September 2026',
     descTR: 'Yepyeni projeler ve teknolojik altyapımızla büyüyoruz, gelişiyoruz, daha iyisi olmaya hazırlanıyoruz.', 
     descEN: 'Growing with brand new projects and technological infrastructure, we are evolving and preparing to become even better.',
 contentTR: `Vega Media olarak, dijital dünyada ve etkinlik yönetiminde sınırları zorlamaya devam ediyoruz. Topluluğumuzu ve projelerimizi çok daha ileri bir seviyeye taşımak için uzun süredir sürdürdüğümüz yenilenme sürecini gururla tamamladık.
