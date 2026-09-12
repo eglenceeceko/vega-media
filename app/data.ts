@@ -20,7 +20,7 @@ export const translations = {
     aboutDesc: "Kuruluş hikayemizi öğrenin ve bizi tanıyın!",
     tagStory: "Hikayemiz",
     
-    teamTitle: "Ailemiz",
+    teamTitle: "Ailemiz (Bu Kısım Yakında Eklenecektir.)",
     teamDesc: "Değerli ekip dostlarımızı tanıyın!",
     tagTeam: "Ekip",
     
