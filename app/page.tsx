@@ -341,7 +341,7 @@ export default function VegaMediaApp() {
               {driveLinksData.map((drive) => (
                 <div key={drive.id} className="bg-[#090d16] border border-slate-800/80 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg backdrop-blur-sm">
                   <div className="min-w-0">
-                    <h3 className="text-base font-bold text-amber-300 break-words">{drive.name}</h3>
+                    <h3 className="text-base font-bold text-amber-300 break-words">{lang === 'TR' ? drive.nameTR : drive.nameEN}</h3>
                     <p className="text-xs text-slate-400 mt-1 break-words">{lang === 'TR' ? drive.descTR : drive.descEN}</p>
                   </div>
                   <a 
@@ -366,10 +366,10 @@ export default function VegaMediaApp() {
             <div className="space-y-5">
               {eventsData.map((event) => (
                 <div key={event.id} className="bg-[#090d16] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
-                  <img src={event.image} alt={event.title} className="w-full h-48 md:h-64 object-cover opacity-90" />
+                  <img src={event.image} alt={lang === 'TR' ? event.titleTR : event.titleEN} className="w-full h-48 md:h-64 object-cover opacity-90" />
                   <div className="p-6">
                     <span className="text-xs font-semibold text-cyan-400">{event.date}</span>
-                    <h3 className="text-lg font-bold text-white mt-1 break-words">{event.title}</h3>
+                    <h3 className="text-lg font-bold text-white mt-1 break-words">{lang === 'TR' ? event.titleTR : event.titleEN}</h3>
                     <p className="text-xs text-slate-400 mt-1.5 break-words">{lang === 'TR' ? event.descTR : event.descEN}</p>
                     <a 
                       href={event.instagramUrl} 
@@ -394,9 +394,9 @@ export default function VegaMediaApp() {
             <div className="space-y-5">
               {partnersData.map((partner) => (
                 <div key={partner.id} className="bg-[#090d16] border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
-                  <img src={partner.image} alt={partner.name} className="w-full h-48 md:h-64 object-cover opacity-90" />
+                  <img src={partner.image} alt={lang === 'TR' ? partner.nameTR : partner.nameEN} className="w-full h-48 md:h-64 object-cover opacity-90" />
                   <div className="p-6">
-                    <h3 className="text-lg font-bold text-white break-words">{partner.name}</h3>
+                    <h3 className="text-lg font-bold text-white break-words">{lang === 'TR' ? partner.nameTR : partner.nameEN}</h3>
                     <p className="text-xs text-slate-400 mt-1.5 break-words">{lang === 'TR' ? partner.descTR : partner.descEN}</p>
                     <a 
                       href={partner.instagramUrl} 
@@ -429,7 +429,7 @@ export default function VegaMediaApp() {
                     >
                       <img src={blog.image} alt="Blog" className="w-full h-40 md:h-52 object-cover opacity-90" />
                       <div className="p-6">
-                        <span className="text-xs font-semibold text-rose-400">{blog.date}</span>
+                        <span className="text-xs font-semibold text-rose-400">{lang === 'TR' ? blog.titleTR : blog.titleEN}</span>
                         <h3 className="text-lg font-bold text-white mt-1 break-words">{lang === 'TR' ? blog.titleTR : blog.titleEN}</h3>
                         <p className="text-xs text-slate-400 mt-1.5 break-words">{lang === 'TR' ? blog.descTR : blog.descEN}</p>
                         <span className="inline-block mt-4 text-xs font-bold text-rose-400">

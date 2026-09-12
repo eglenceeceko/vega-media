@@ -142,13 +142,14 @@ export const teamCategoriesData = [
 ];
 
 export const driveLinksData = [
-  { id: '1', name: 'Çok Yakında... / Coming Soon...', descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', link: 'https://drive.google.com' }
+  { id: '1', nameTR: 'Gelecek Partnerimiz', nameEN: 'Upcoming Partner', descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', link: 'https://instagram.com/vegamediatr' }
 ];
 
 export const eventsData = [
   { 
     id: '1', 
-    title: 'Çok Yakında... / Coming Soon...', 
+    titleTR: 'Kasım Çalıştayı',
+    titleEN: 'November Workshop',
     date: 'Kasım 2026', 
     descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', 
     descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', 
@@ -160,7 +161,8 @@ export const eventsData = [
 export const partnersData = [
   { 
     id: '1', 
-    name: 'Çok Yakında... / Coming Soon...', 
+    nameTR: 'Gelecek Partnerimiz',
+    nameEN: 'Upcoming Partner',
     descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', 
     descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', 
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
