@@ -135,7 +135,7 @@ export const aboutData = {
   EN: "Vega Media is a young and creative team established to produce in the fields of media, photography, video, editing and technology..."
 };
 
-const familyCategoriesData = [
+export const teamCategoriesData = [
   {
     id: 'yonetim',
     titleTR: 'Yönetim Ekibimiz',
