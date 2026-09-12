@@ -155,7 +155,7 @@ const [selectedCategory, setSelectedCategory] = useState<any>(null);
                 </div>
               </div>
 
-{/* --- 1. ANA SAYFA KARTI (Menüde görünen kart) --- */}
+{/* --- 1. ANA SAYFA KARTI AİLEMİZ(Menüde görünen kart) --- */}
 {activeSection === 'home' && (
   <div onClick={() => setActiveSection('team')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-fuchsia-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
     <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-fuchsia-500/10 transition-all" />
@@ -182,13 +182,13 @@ const [selectedCategory, setSelectedCategory] = useState<any>(null);
     {/* EĞER KATEGORİ SEÇİLMEDİYSE: Kategorileri Listele */}
     {!selectedCategory ? (
       <>
-        {/* Ana Sayfaya Dön Butonu */}
-        <button 
-          onClick={() => setActiveSection('main')}
-          className="mb-6 flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white text-xs font-semibold transition-all cursor-pointer border border-slate-700 shadow-md"
-        >
-          ← {lang === 'TR' ? 'Ana Sayfaya Dön' : 'Back to Home'}
-        </button>
+{/* Ana Sayfaya Dön Butonu */}
+<button 
+  onClick={() => setActiveSection('home')}
+  className="mb-6 flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white text-xs font-semibold transition-all cursor-pointer border border-slate-700 shadow-md"
+>
+  ← {lang === 'TR' ? 'Ana Sayfaya Dön' : 'Back to Home'}
+</button>
 
         <h2 className="text-2xl font-black text-white mb-6">👥 {t.teamTitle}</h2>
         
