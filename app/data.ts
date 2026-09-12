@@ -142,17 +142,17 @@ export const teamCategoriesData = [
 ];
 
 export const driveLinksData = [
-  { id: '1', name: 'A Etkinliği', descTR: 'Çalışmalarımızı görüntüle', descEN: 'View our works', link: 'https://drive.google.com' }
+  { id: '1', name: 'Çok Yakında... / Coming Soon...', descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', link: 'https://drive.google.com' }
 ];
 
 export const eventsData = [
   { 
     id: '1', 
-    title: 'Örnek Etkinlik 1', 
+    title: 'Çok Yakında... / Coming Soon...', 
     date: 'Kasım 2026', 
-    descTR: 'Harika bir çalıştay ve etkinlik deneyimi.', 
-    descEN: 'A great workshop and event experience.', 
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600&auto=format&fit=crop',
+    descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', 
+    descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', 
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
     instagramUrl: 'https://instagram.com/vegamediatr'
   }
 ];
@@ -160,10 +160,10 @@ export const eventsData = [
 export const partnersData = [
   { 
     id: '1', 
-    name: 'Partner Firma', 
-    descTR: 'Gelecekteki vizyoner iş ortaklığımız.', 
-    descEN: 'Our future visionary partnership.', 
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop',
+    name: 'Çok Yakında... / Coming Soon...', 
+    descTR: 'Bu alan şuanlık bakımdadır, yakın zamanda yazılım ekibimiz tarafından güncellenip hizmetinize sunulacaktır.', 
+    descEN: 'This section is currently under maintenance and will be updated and put into service by our software team soon.', 
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
     instagramUrl: 'https://instagram.com/vegamediatr'
   }
 ];
