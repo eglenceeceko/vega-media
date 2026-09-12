@@ -157,22 +157,9 @@ const [selectedCategory, setSelectedCategory] = useState<any>(null);
 
 {/* --- 1. ANA SAYFA KARTI AİLEMİZ(Menüde görünen kart) --- */}
 {activeSection === 'home' && (
-  <div onClick={() => setActiveSection('team')} className="group bg-[#090d16]/80 hover:bg-[#0e1424] border border-slate-800/80 hover:border-fuchsia-500/50 transition-all duration-300 rounded-2xl p-5 cursor-pointer flex flex-col justify-between shadow-xl shadow-black/50 backdrop-blur-sm relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-fuchsia-500/10 transition-all" />
-    <div className="flex items-center justify-between mb-4 relative z-10">
-      <div className="w-11 h-11 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all shadow-md shrink-0">
-        <Users size={22} />
-      </div>
-      <span className="text-[10px] font-bold text-fuchsia-400 bg-fuchsia-500/10 px-2.5 py-1 rounded-lg border border-fuchsia-500/20">{t.tagTeam}</span>
-    </div>
-    <div className="relative z-10 min-w-0">
-      <div className="flex items-center justify-between gap-2">
-        <h2 className="text-lg font-bold text-white group-hover:text-fuchsia-200 transition-colors truncate">{t.teamTitle}</h2>
-        <ArrowUpRight size={18} className="text-slate-600 group-hover:text-fuchsia-400 transition-colors shrink-0" />
-      </div>
-      <p className="text-xs text-slate-400 mt-1 break-words">{t.teamDesc}</p>
-    </div>
-  </div>
+<div onClick={() => alert('Bu kısım yakında aktif olacak!')} className="opacity-60 cursor-not-allowed ...">
+  {/* Ekip kartının içeriği */}
+</div>
 )}
 
 {/* --- 2. DETAY EKRANI (Kategoriler ve Tıklanınca Üye Kartları) --- */}
